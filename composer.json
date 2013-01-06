@@ -1,0 +1,13 @@
+{
+    "name": "kcmerrill/Events",
+    "description": "A simple event script, useful for EDD and Plugins",
+    "authors": [
+        {
+            "name": "kc merrill",
+            "email": "kcmerrill@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    }
+}

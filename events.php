@@ -58,7 +58,7 @@ class events {
             foreach ($this->trigger[$trigger] as $priority => $callbacks) {
                 foreach ($callbacks as $callback) {
                     //Give our callback a name .. sortof.
-                    $dry_run[] = is_string($callback) ? $callback : '__CUSTOM__';
+                    $dry_run[] = is_string($callback) ? $callback : '__CALLBACK__';
                     if (!$dry) {
                         //Will run the call back, passing in $param.
                         $param = $callback($param);
@@ -73,11 +73,11 @@ class events {
     /**
      * Registers a call back with a given trigger and priority.
      *
-     * @param int $priority
      * @param string $trigger
      * @param callback $callback | string or closure. As long as is_callable() passes.
+     * @param int $priority
      */
-    function register($priority, $trigger, $callback, $unregister = false) {
+    function register($trigger, $callback, $priority = 10, $unregister = false) {
         $unregister = $unregister ? $this->unRegister($trigger) : $unregister;
         //Lets setup the priority. Make sure it's an integer. If not, default to 10
         $priority = is_numeric($priority) ? (int) $priority : 10;
@@ -90,10 +90,10 @@ class events {
             //Multiple regester called. IE 'md5|strtolower|strtoupper'
             $callbacks = explode('|', $callback);
             //Regester each one specifically
-                $this->register($priority, $trigger, $callbacks);
+                $this->register($trigger, $callbacks, $priority);
         } else if (is_array($callback)) {
             foreach ($callback as $cb) {
-                $this->register($priority, $trigger, $cb);
+                $this->register($trigger, $cb, $priority);
             }
         } else {
             //No clue what you gave me. Lets just continue on.
@@ -123,9 +123,9 @@ class events {
      * @param mixed $param
      * @return mixed $param
      */
-    function __call($trigger, $param) {
-        $param = isset($param[0]) ? $param[0] : false;
-        $dry_run = isset($param[1]) && is_bool($param[1]) ? $dry_run : false;
+    function __call($trigger, $params) {
+        $param = isset($params[0]) ? $params[0] : false;
+        $dry_run = isset($params[1]) && is_bool($params[1]) ? $params[1] : false;
         return $this->run($trigger, $param, $dry_run);
     }
 

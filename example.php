@@ -13,32 +13,32 @@ $event = new kcmerrill\events;
  * In this particular register, we are simply going to lower the password in it's current state
  * <password>_salted~!
  */
-$event->register(10, 'password', function($password){
+$event->register('password', function($password){
     return strtolower($password);
-});
+}, 10);
 
 
 /**
  * First, lets add a salt. Uppercase(to show the next step actually works.
  */
-$event->register(1, 'password', function($password){
+$event->register('password', function($password){
     return $password . '_SALTED~!';
-});
+}, 1);
 
 /**
  * Go ahead and hash the password. 99 is after 1 and 10, so it'll be the last thing
  * done to the password.
  */
-$event->register(99, 'password', function($password){
+$event->register('password', function($password){
     return md5($password);
-});
+}, 99);
 
 
 /**
  * Register a "hook". In this case, it's a function that just echos out the password.
  * Pretty basic, but shows how you can use it.
  */
-$event->register(100, 'password', function($password){
+$event->register('password', function($password){
     echo 'Newly hashed/salted password: ' . $password . "\n";
     /**
      * We need to return the password still!
@@ -49,7 +49,7 @@ $event->register(100, 'password', function($password){
      * Use your imagination though :)
      */
     return $password;
-});
+}, 100);
 
 
 $password = $event->password('hello_world');
