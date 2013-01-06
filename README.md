@@ -7,4 +7,4 @@ I've attached a simple example.php to further explain the concept. Also, take a 
 <br><br>
 <a href='http://codex.wordpress.org/Plugin_API'>Wordpress Plugin API</a>
 
-[![Build Status](https://travis-ci.org/kcmerrill/Events.png?branch=master)](https://travis-ci.org/kcmerrill/Events)
+[![Build Status](https://travis-ci.org/kcmerrill/events.png?branch=master)](https://travis-ci.org/kcmerrill/events)
