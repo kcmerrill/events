@@ -28,7 +28,7 @@
  * kcmerrill/9.9.2012
  */
 
-namespace kcmerrill\events;
+namespace kcmerrill\utility;
 
 class events {
 
