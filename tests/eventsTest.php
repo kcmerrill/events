@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../events.php';
+require_once __DIR__ . '/../src/kcmerrill/events.php';
 
 use kcmerrill\events;
 
