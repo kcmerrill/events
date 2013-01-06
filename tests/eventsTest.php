@@ -1,15 +1,13 @@
 <?php
 
-require_once __DIR__ . '/../src/kcmerrill/events.php';
-
-use kcmerrill\events;
+require_once __DIR__ . '/../src/kcmerrill/events/events.php';
 
 class eventsTest extends PHPUnit_Framework_TestCase {
 
     var $events;
 
     public function setUp(){
-        $this->events = new events;
+        $this->events = new kcmerrill\events\events;
     }
 
     public function tearDown(){

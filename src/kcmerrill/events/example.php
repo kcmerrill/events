@@ -6,7 +6,7 @@ require_once 'events.php';
  * Just a really quick example on it's usage.
  */
 
-$event = new kcmerrill\events;
+$event = new kcmerrill\events\events;
 
 /**
  * Priority 10. Doing this to show priorities and how they are run in numerical order.
