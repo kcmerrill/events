@@ -117,6 +117,13 @@ class events {
     }
 
     /**
+    * Filter, same as executing run()
+    */
+    public function filter($trigger, $param = false, $dry = false) {
+        return $this->run($trigger,$param,$dry);
+    }
+    
+    /**
      * Magical. Setup so we can use triggers as function names.
      *
      * @param string $trigger
